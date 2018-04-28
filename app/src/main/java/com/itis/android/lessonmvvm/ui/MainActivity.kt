@@ -1,7 +1,8 @@
-package com.itis.android.lessonmvvm
+package com.itis.android.lessonmvvm.ui
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.itis.android.lessonmvvm.R
 
 class MainActivity : AppCompatActivity() {
 
