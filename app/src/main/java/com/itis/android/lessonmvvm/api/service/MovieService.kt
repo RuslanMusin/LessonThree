@@ -1,7 +1,7 @@
 package com.itis.android.lessonmvvm.api.service
 
 import com.itis.android.lessonmvvm.model.Genre
-import com.itis.android.lessonmvvm.model.MoviesResponse
+import com.itis.android.lessonmvvm.model.movie.MoviesResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 
