@@ -1,9 +1,9 @@
-package com.itis.android.lessonmvvm.api
+package com.itis.android.lessonmvvm.api.intercepors
 
-import okhttp3.Interceptor
-import okhttp3.logging.HttpLoggingInterceptor
 import com.itis.android.lessonmvvm.BuildConfig
+import okhttp3.Interceptor
 import okhttp3.Response
+import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
 
 /**

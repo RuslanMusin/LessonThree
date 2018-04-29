@@ -20,6 +20,7 @@ android {
     }
     buildTypes.each {
         it.buildConfigField 'String', 'API_ENDPOINT', baseUrl
+        it.buildConfigField 'String', 'IMAGE_ENDPOINT', posterUrl
         it.buildConfigField 'String', 'API_KEY', apiKey
     }
     buildToolsVersion '27.0.3'

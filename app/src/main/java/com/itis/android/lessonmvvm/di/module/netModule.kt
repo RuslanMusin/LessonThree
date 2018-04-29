@@ -1,8 +1,9 @@
 package com.itis.android.lessonmvvm.di.module
 
 import com.itis.android.lessonmvvm.BuildConfig
-import com.itis.android.lessonmvvm.api.ApiKeyInterceptor
-import com.itis.android.lessonmvvm.api.LoggingInterceptor
+import com.itis.android.lessonmvvm.api.intercepors.ApiKeyInterceptor
+import com.itis.android.lessonmvvm.api.intercepors.LoggingInterceptor
+import com.itis.android.lessonmvvm.api.service.MovieService
 import okhttp3.OkHttpClient
 import org.kodein.di.Kodein
 import org.kodein.di.generic.bind
@@ -19,6 +20,7 @@ fun netModule() = Kodein.Module {
 
     bind<OkHttpClient>() with singleton { provideOkHttpClient() }
     bind<Retrofit>() with singleton { provideRetrofit(instance()) }
+    bind<MovieService>() with singleton { instance<Retrofit>().create(MovieService::class.java) }
 }
 
 private fun provideOkHttpClient(): OkHttpClient =
