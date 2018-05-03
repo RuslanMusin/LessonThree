@@ -41,9 +41,11 @@ class MovieViewModel(private val movieService: MovieService) : ViewModel() {
                     .subscribeBy(onSuccess = {
                         val moviesLiveDataImm = moviesLiveData
                         moviesLiveDataImm?.value = Response.success(it)
+                        moviesLiveData = moviesLiveDataImm
                     }, onError = {
                         val moviesLiveDataImm = moviesLiveData
-                        moviesLiveDataImm?.setValue(Response.error(it))
+                        moviesLiveDataImm?.value = Response.error(it)
+                        moviesLiveData = moviesLiveDataImm
                     })
         }
         return moviesLiveData
