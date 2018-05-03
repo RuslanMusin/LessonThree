@@ -5,7 +5,10 @@ package com.itis.android.lessonmvvm.model
  */
 class Response<T>(val data: T?, val error: Throwable?) {
 
-    fun <T> success(data: T): Response<T> = Response(data, null)
+    companion object {
+        fun <T> success(data: T): Response<T> = Response(data, null)
 
-    fun <T> error(error: Throwable): Response<T> = Response(null, error)
+        fun <T> error(error: Throwable): Response<T> = Response(null, error)
+    }
+
 }

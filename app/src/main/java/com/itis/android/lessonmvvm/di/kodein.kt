@@ -9,10 +9,10 @@ import org.kodein.di.Kodein
 /**
  * Created by Nail Shaykhraziev on 28.04.2018.
  */
-lateinit var kodein: Kodein
+lateinit var di: Kodein
 
 fun initKodein(app: Application) {
-    kodein = Kodein {
+    di = Kodein {
         import(appModule(app))
         import(netModule())
         import(picassoModule())
