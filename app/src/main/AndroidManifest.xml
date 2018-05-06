@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.itis.android.lessonmvvm">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".AppDelegate"
         android:allowBackup="true"
@@ -10,13 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_db_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MovieListActivity">
+        <activity android:name=".ui.movielist.MovieListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.MovieDetailsActivity"
+            android:parentActivityName=".ui.movielist.MovieListActivity"/>
     </application>
 
 </manifest>

@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
+    androidExtensions {
+        experimental = true
+    }
     defaultConfig {
         applicationId "com.itis.android.lessonmvvm"
         minSdkVersion 21

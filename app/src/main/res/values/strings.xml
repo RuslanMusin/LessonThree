@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">LessonMvvM</string>
     <string name="empty_list">Empty list</string>
+
+    <!--Movie activity-->
+    <string name="overview">Overview:</string>
+    <string name="release_date">Release date:</string>
+    <string name="rating">Rating:</string>
+    <string name="vote_count">Vote count:</string>
 </resources>

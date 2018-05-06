@@ -1,4 +1,4 @@
-package com.itis.android.lessonmvvm.model
+package com.itis.android.lessonmvvm.model.api_response
 
 import com.google.gson.annotations.SerializedName
 

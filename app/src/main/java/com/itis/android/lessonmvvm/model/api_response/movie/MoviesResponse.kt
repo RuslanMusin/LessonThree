@@ -1,4 +1,4 @@
-package com.itis.android.lessonmvvm.model.movie
+package com.itis.android.lessonmvvm.model.api_response.movie
 
 import com.google.gson.annotations.SerializedName
 
