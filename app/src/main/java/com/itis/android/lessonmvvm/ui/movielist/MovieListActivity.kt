@@ -38,11 +38,17 @@ class MovieListActivity : AppCompatActivity() {
 
     private fun observeMovieList() =
             viewModel.getTopRatedMoviesList()?.observe(this, Observer {
-                if (it?.data != null) {
-                    adapter?.updateData(it.data)
-                } else if (it?.error != null) {
-                    Snackbar.make(container, it.error.message
-                            ?: "We have problem", Snackbar.LENGTH_SHORT)
+                when {
+                    it?.data != null -> {
+                        adapter?.updateData(it.data)
+                    }
+                    it?.error != null -> {
+                        Snackbar.make(container, it.error.message
+                                ?: "We have problem", Snackbar.LENGTH_SHORT)
+                    }
+                    else -> {
+                        Snackbar.make(container, "We have problem!!!", Snackbar.LENGTH_SHORT)
+                    }
                 }
             })
 
@@ -70,8 +76,7 @@ class MovieListActivity : AppCompatActivity() {
     private fun initRecycler() {
         adapter = MovieListAdapter(ArrayList(0), { pair -> viewModel.movieClicked(pair) })
         val manager = LinearLayoutManager(this)
-        val dividerItemDecoration = DividerItemDecoration(rv_movies.context,
-                manager.orientation)
+        val dividerItemDecoration = DividerItemDecoration(rv_movies.context, manager.orientation)
         rv_movies.layoutManager = manager
         rv_movies.addItemDecoration(dividerItemDecoration)
         rv_movies.adapter = adapter

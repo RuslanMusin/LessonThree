@@ -10,7 +10,6 @@ import org.kodein.di.generic.instance
 import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 
-
 /**
  * Created by Nail Shaykhraziev on 28.04.2018.
  */
