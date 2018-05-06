@@ -2,13 +2,13 @@ package com.itis.android.lessonmvvm.ui.movielist
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.itis.android.lessonmvvm.R
 import com.itis.android.lessonmvvm.model.api_response.movie.Movie
 
-
 class MovieListAdapter(private var movieList: List<Movie>,
-                       private val movieClickListener: (Movie) -> Unit)
+                       private val movieClickListener: ((Pair<Movie, View>)) -> Unit)
     : RecyclerView.Adapter<MovieHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
@@ -23,7 +23,7 @@ class MovieListAdapter(private var movieList: List<Movie>,
         holder.bind(movieList[position], movieClickListener)
     }
 
-    fun updateDataset(updateList: List<Movie>) {
+    fun updateData(updateList: List<Movie>) {
         this.movieList = updateList
         notifyDataSetChanged()
     }

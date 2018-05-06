@@ -37,6 +37,8 @@ class MovieDetailsActivity : AppCompatActivity() {
         setSupportActionBar(tb_movie)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        tb_movie.setNavigationOnClickListener { onBackPressed() }
+        window.statusBarColor = resources.getColor(R.color.transparent)
     }
 
     private fun initViews(movie: Movie) {

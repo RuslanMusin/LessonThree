@@ -1,5 +1,3 @@
-package com.itis.android.lessonmvvm.utils
-
 /*
  *  Copyright 2017 Google Inc.
  *
@@ -15,6 +13,8 @@ package com.itis.android.lessonmvvm.utils
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
+package com.itis.android.lessonmvvm.utils
+
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Observer

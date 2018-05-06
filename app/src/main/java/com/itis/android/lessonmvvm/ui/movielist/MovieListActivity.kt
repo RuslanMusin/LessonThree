@@ -1,7 +1,9 @@
 package com.itis.android.lessonmvvm.ui.movielist
 
+import android.app.ActivityOptions
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
@@ -12,6 +14,7 @@ import com.itis.android.lessonmvvm.R
 import com.itis.android.lessonmvvm.di.di
 import com.itis.android.lessonmvvm.ui.MovieDetailsActivity
 import com.itis.android.lessonmvvm.ui.ViewModelFactory
+import com.itis.android.lessonmvvm.utils.ARG_MOVIE
 import kotlinx.android.synthetic.main.activity_movie_list.*
 import kotlinx.android.synthetic.main.layout_recycler_view.*
 import org.kodein.di.generic.instance
@@ -36,7 +39,7 @@ class MovieListActivity : AppCompatActivity() {
     private fun observeMovieList() =
             viewModel.getTopRatedMoviesList()?.observe(this, Observer {
                 if (it?.data != null) {
-                    adapter?.updateDataset(it.data)
+                    adapter?.updateData(it.data)
                 } else if (it?.error != null) {
                     Snackbar.make(container, it.error.message
                             ?: "We have problem", Snackbar.LENGTH_SHORT)
@@ -55,12 +58,17 @@ class MovieListActivity : AppCompatActivity() {
     private fun observeItemClick() =
             viewModel.navigateToMovieDetails.observe(this, Observer {
                 it?.let {
-                    MovieDetailsActivity.startActivity(this, it)
+                    val intent = Intent(this, MovieDetailsActivity::class.java)
+                    intent.putExtra(ARG_MOVIE, it.first)
+                    val transitionName = getString(R.string.transaction_poster)
+                    val transitionActivityOptions =
+                            ActivityOptions.makeSceneTransitionAnimation(this, it.second, transitionName)
+                    startActivity(intent, transitionActivityOptions.toBundle())
                 }
             })
 
     private fun initRecycler() {
-        adapter = MovieListAdapter(ArrayList(0), { movie -> viewModel.movieClicked(movie) })
+        adapter = MovieListAdapter(ArrayList(0), { pair -> viewModel.movieClicked(pair) })
         val manager = LinearLayoutManager(this)
         val dividerItemDecoration = DividerItemDecoration(rv_movies.context,
                 manager.orientation)

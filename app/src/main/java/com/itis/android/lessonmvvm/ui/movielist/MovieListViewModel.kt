@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.support.annotation.MainThread
+import android.view.View
 import com.itis.android.lessonmvvm.api.service.MovieService
 import com.itis.android.lessonmvvm.model.Response
 import com.itis.android.lessonmvvm.model.api_response.movie.Movie
@@ -20,13 +21,13 @@ class MovieListViewModel(private val movieService: MovieService) : ViewModel() {
     private val loadingLiveData = MutableLiveData<Boolean>()
     private var moviesLiveData: MutableLiveData<Response<List<Movie>>>? = null
 
-    val navigateToMovieDetails = SingleLiveEvent<Movie>()
+    val navigateToMovieDetails = SingleLiveEvent<Pair<Movie, View>>()
 
     fun isLoading(): LiveData<Boolean> {
         return loadingLiveData
     }
 
-    fun movieClicked(movie: Movie) {
+    fun movieClicked(movie: Pair<Movie, View>) {
         navigateToMovieDetails.value = movie
     }
 
