@@ -10,9 +10,6 @@ import org.kodein.di.generic.bind
 import org.kodein.di.generic.instance
 import org.kodein.di.generic.singleton
 
-/**
- * Created by Nail Shaykhraziev on 28.04.2018.
- */
 lateinit var di: Kodein
 
 fun initKodein(app: Application) {
