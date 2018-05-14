@@ -7,7 +7,6 @@ import com.itis.android.lessonmvvm.ui.movielist.base.MovieListActivity
 
 class TopRatedMoviesListActivity : MovieListActivity() {
 
-    override fun getMoviesList(): LiveData<Response<List<Movie>>>? {
-        return viewModel.getTopRatedMoviesList()
-    }
+    override fun getMoviesList():
+            LiveData<Response<List<Movie>>>? = viewModel.getTopRatedMoviesList()
 }
