@@ -120,7 +120,8 @@ abstract class MovieListActivity : BaseActivity() {
 
         var searchView: SearchView? = null
         if (searchItem != null) {
-            searchView = searchItem.getActionView() as SearchView?
+            searchView = searchItem.getActionView() as? SearchView
+                    ?: throw IllegalArgumentException("Unknown class.")
         }
         if (searchView != null) {
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
