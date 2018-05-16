@@ -32,28 +32,26 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     protected fun setBackArrow(toolbar: Toolbar) {
-        val actionBar = supportActionBar
-        actionBar?.let {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setDisplayShowHomeEnabled(true)
-            toolbar.setNavigationOnClickListener { v -> onBackPressed() }
+        supportActionBar?.let {
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setDisplayShowHomeEnabled(true)
+            toolbar.setNavigationOnClickListener { onBackPressed() }
         }
     }
 
     private fun initNavigationDrawer(toolbar: Toolbar) {
-        nav_view.setNavigationItemSelectedListener{ menuItem ->
-            val id = menuItem.getItemId()
-            when (id) {
+        nav_view.setNavigationItemSelectedListener{
+            when (it.getItemId()) {
                 R.id.menu_top_movie -> {
                     val intent = Intent(applicationContext, TopRatedMoviesListActivity::class.java)
                     startActivity(intent)
-                    menuItem.isChecked = true
+                    it.isChecked = true
                     drawer_layout.closeDrawers()
                 }
                 R.id.menu_popular_movie -> {
                     val intent = Intent(applicationContext, PopularMoviesListActivity::class.java)
                     startActivity(intent)
-                    menuItem.isChecked = true
+                    it.isChecked = true
                     drawer_layout.closeDrawers()
                 }
             }
